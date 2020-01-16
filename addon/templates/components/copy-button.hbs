@@ -5,14 +5,15 @@
   title={{@title}}
   type={{if @buttonType @buttonType "button"}}
   ...attributes
-  data-clipboard-text={{@clipboardText}}
-  data-clipboard-target={{@clipboardTarget}}
-  data-clipboard-action={{@clipboardAction}}
-
   {{did-insert this.setupElement}}
-  {{did-insert this.registerClipboard}}
-  {{did-update this.registerClipboard}}
-  {{will-destroy this.destroyClipboard}}
+  {{clipboard
+    text=@clipboardText
+    target=@clipboardTarget
+    action=@clipboardAction
+    delegateClickEvent=@delegateClickEvent
+    onSuccess=@success
+    onError=@error
+  }}
 >
   {{yield}}
 </button>
